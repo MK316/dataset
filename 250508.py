@@ -20,16 +20,17 @@ with tabs[0]:
     st.caption("This page will be available only until May 13.")
     st.markdown("---")
     st.markdown("""
-    **📘 Tab 1: Instructions**  
+    ### 📘 Tab 1: Instructions  
     This page provides information about the midterm exam results. By entering the passcode you submitted, you can check your score and see where your performance stands among all students. Please click each tab to view the details.
 
-    **🔍 Tab 2: Check My Score**  
+    ### 🔍 Tab 2: Check My Score  
     Enter your passcode to view your group, name, and score.
 
-    **📊 Tab 3: Leaderboard**  
+    
+    ### 📊 Tab 3: Leaderboard  
     Shows all scores as gray dots. Your score is shown in red.
 
-    **🍎 Tab 4: Group Score**  
+    ### 🍎 Tab 4: Group Score  
     Displays score distribution per group using a boxplot, with median scores highlighted.
     """)
 
