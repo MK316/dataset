@@ -85,12 +85,27 @@ with tabs[2]:
 with tabs[3]:
     st.markdown("### 📦 Group Score Distribution")
 
-    fig, ax = plt.subplots(figsize=(6, 4))
-    sns.boxplot(data=df, x="Group", y="Score", ax=ax)
+    # Define a color palette (auto-adjusts to group count)
+    unique_groups = df["Group"].unique()
+    palette = sns.color_palette("Set2", len(unique_groups))
 
+    # Plot setup
+    fig, ax = plt.subplots(figsize=(8, 5))
+    sns.boxplot(data=df, x="Group", y="Score", ax=ax, palette=palette)
+
+    # Compute median values
     medians = df.groupby("Group")["Score"].median()
-    for i, (group, median_val) in enumerate(medians.items()):
-        ax.text(i, median_val + 1, f"Median: {median_val}", ha='center', fontsize=10, color='blue')
 
+    # Add median text BELOW each box
     ax.set_title("Boxplot of Scores by Group")
+    ax.set_ylabel("Score")
+    ax.set_xlabel("Group")
+
+    # Display text below x-axis for each group
+    ax.set_ylim(df["Score"].min() - 10, df["Score"].max() + 10)
+    for i, group in enumerate(sorted(df["Group"].unique())):
+        median_value = medians[group]
+        ax.text(i, df["Score"].min() - 5, f"Median: {median_value:.1f}", 
+                ha='center', va='center', fontsize=10, color='black')
+
     st.pyplot(fig)
