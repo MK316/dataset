@@ -24,11 +24,11 @@ with tabs[0]:
     This page provides information about the midterm exam results. By entering the passcode you submitted, you can check your score and see where your performance stands among all students. Please click each tab to view the details.
 
     ### 🔍 Tab 2: Check My Score  
-    Enter your passcode to view your group, name, and score.
+    Enter your passcode to view your score.
 
     
     ### 📊 Tab 3: Leaderboard  
-    Shows all scores as gray dots. Your score is shown in red.
+    Shows all scores as gray dots. Your score will be shown in red if you provide your Passcode in a textbox.
 
     ### 🍎 Tab 4: Group Score  
     Displays score distribution per group using a boxplot, with median scores highlighted.
