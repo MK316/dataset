@@ -99,11 +99,11 @@ with tabs[3]:
     # Add median text BELOW each box
     ax.set_title("Boxplot of Scores by Group")
     ax.set_ylabel("Score")
-    ax.set_ylim(0, 211)
+    ax.set_ylim(0, 220)
     ax.set_xlabel("Group")
 
     # Display text below x-axis for each group
-    ax.set_ylim(df["Score"].min() - 10, df["Score"].max() + 10)
+    # ax.set_ylim(df["Score"].min() - 10, df["Score"].max() + 10)
     for i, group in enumerate(sorted(df["Group"].unique())):
         median_value = medians[group]
         ax.text(i, df["Score"].min() - 5, f"Median: {median_value:.1f}", 
