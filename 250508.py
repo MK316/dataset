@@ -106,7 +106,7 @@ with tabs[3]:
     # ax.set_ylim(df["Score"].min() - 10, df["Score"].max() + 10)
     for i, group in enumerate(sorted(df["Group"].unique())):
         median_value = medians[group]
-        ax.text(i, df["Score"].min() - 5, f"Median: {median_value:.1f}", 
-                ha='center', va='center', fontsize=10, color='black')
+        ax.text(i, df["Score"].min() - 15, f"Median: {median_value:.1f}", 
+                ha='center', va='center', fontsize=8, color='black')
 
     st.pyplot(fig)
