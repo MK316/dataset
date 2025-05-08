@@ -39,7 +39,7 @@ with tabs[0]:
 
 # --- Tab 2: Overall score
 
-with tabs[3]:
+with tabs[1]:
     st.markdown("### 📦 Score Distribution (All Students)")
 
     # Plot setup
