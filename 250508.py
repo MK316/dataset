@@ -49,25 +49,36 @@ with tabs[2]:
     st.markdown("### 📊 Leaderboard")
     passcode_input_lb = st.text_input("🔐 (Optional) Enter your passcode to highlight your score:")
 
-    df_sorted = df.sort_values(by="Score", ascending=False)
+    # Sort by score descending
+    df_sorted = df.sort_values(by="Score", ascending=False).reset_index(drop=True)
+    user_index = None
     user_score = None
 
     if passcode_input_lb:
         match = df[df['Passcode'].astype(str) == passcode_input_lb.strip()]
         if not match.empty:
             user_score = match.iloc[0]['Score']
+            user_index = df_sorted[df_sorted['Score'] == user_score].index[0]
 
-    fig, ax = plt.subplots(figsize=(6, 4))
-    ax.scatter(df_sorted['Score'], [1]*len(df_sorted), color='gray', s=100, label='Others')
-    
-    if user_score is not None:
-        ax.scatter(user_score, 1, color='red', s=120, label='You')
-    
-    ax.set_yticks([])
-    ax.set_xlabel("Score")
-    ax.set_title("Leaderboard")
+    # Plot setup
+    fig, ax = plt.subplots(figsize=(8, 5))
+    x_vals = range(len(df_sorted))
+    y_vals = df_sorted['Score']
+
+    # Plot all points as gray
+    ax.scatter(x_vals, y_vals, color='gray', s=100, label='Others')
+
+    # Highlight user point
+    if user_index is not None:
+        ax.scatter(user_index, user_score, color='red', s=120, label='You')
+
+    ax.set_xlabel("Rank Order (Highest to Lowest)")
+    ax.set_ylabel("Score")
+    ax.set_title("Leaderboard: Score Distribution")
+    ax.invert_xaxis()  # Optional: Highest score on the left
     ax.legend()
     st.pyplot(fig)
+
 
 # --- Tab 4: Group Score ---
 with tabs[3]:
