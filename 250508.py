@@ -12,7 +12,7 @@ def load_data():
 
 df = load_data()
 
-tabs = st.tabs(["📘 Instructions", "🔍 Check My Score", "📊 Leaderboard", "🍎 Group Score"])
+tabs = st.tabs(["📘 Instructions", "🍰 Overall Result", "🔍 Check My Score", "📊 Leaderboard", "🍎 Group Score"])
 
 # --- Tab 1: Instructions ---
 with tabs[0]:
@@ -23,19 +23,46 @@ with tabs[0]:
     ### 📘 Tab 1: Instructions  
     This page provides information about the midterm exam results. By entering the passcode you submitted, you can check your score and see where your performance stands among all students. Please click each tab to view the details.
 
-    ### 🔍 Tab 2: Check My Score  
+    ### 📘 Tab 2: Overall result  
+   This tab displays a boxplot showing the distribution of all scores. The median is the middle score when all scores are arranged from lowest to highest.
+    
+    ### 🔍 Tab 3: Check My Score  
     Enter your passcode to view your score.
 
     
-    ### 📊 Tab 3: Leaderboard  
-    Shows all scores as gray dots. Your score will be shown in red if you provide your Passcode in a textbox.
+    ### 📊 Tab 4: Leaderboard  
+    The scores of all test takers are displayed in order. You can enter your passcode to see your own position.
 
-    ### 🍎 Tab 4: Group Score  
+    ### 🍎 Tab 5: Group Score  
     Displays score distribution per group using a boxplot, with median scores highlighted.
     """)
 
+# --- Tab 2: Overall score
+
+with tabs[3]:
+    st.markdown("### 📦 Score Distribution (All Students)")
+
+    # Plot setup
+    fig, ax = plt.subplots(figsize=(6, 5))
+    sns.boxplot(y=df["Score"], color="skyblue", ax=ax)
+
+    # Compute median
+    median_value = df["Score"].median()
+
+    # Add median text BELOW the box
+    ax.set_title("Boxplot of All Scores")
+    ax.set_ylabel("Score")
+    ax.set_ylim(0, 220)
+
+    ax.text(0, df["Score"].min() - 10, f"Median: {median_value:.1f}",
+            ha='center', va='center', fontsize=10, color='black')
+
+    st.pyplot(fig)
+
+
+
 # --- Tab 2: Check My Score ---
-with tabs[1]:
+with tabs[2]:
     st.markdown("### 🔍 Check Your Score")
     passcode_input = st.text_input("Enter your passcode:")
 
@@ -48,7 +75,7 @@ with tabs[1]:
             st.error("❌ Passcode not found. Please try again.")
 
 # --- Tab 3: Leaderboard ---
-with tabs[2]:
+with tabs[3]:
     st.markdown("### 📊 Leaderboard")
     passcode_input_lb = st.text_input("🔐 (Optional) Enter your passcode to highlight your score:")
 
@@ -85,7 +112,7 @@ with tabs[2]:
 
 
 # --- Tab 4: Group Score ---
-with tabs[3]:
+with tabs[4]:
     st.markdown("### 📦 Group Score Distribution")
 
     # Define a color palette (auto-adjusts to group count)
