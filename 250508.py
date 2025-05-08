@@ -50,7 +50,7 @@ with tabs[2]:
     passcode_input_lb = st.text_input("🔐 (Optional) Enter your passcode to highlight your score:")
 
     # Sort by score descending
-    df_sorted = df.sort_values(by="Score", ascending=False).reset_index(drop=True)
+    df_sorted = df.sort_values(by="Score", ascending=True).reset_index(drop=True)
     user_index = None
     user_score = None
 
