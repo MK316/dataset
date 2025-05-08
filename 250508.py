@@ -74,6 +74,7 @@ with tabs[2]:
 
     ax.set_xlabel("Rank Order (Highest to Lowest)")
     ax.set_ylabel("Score")
+    ax.set_ylim(0, 211)
     ax.set_title("Leaderboard: Score Distribution")
     ax.invert_xaxis()  # Optional: Highest score on the left
     ax.legend()
