@@ -99,6 +99,7 @@ with tabs[3]:
     # Add median text BELOW each box
     ax.set_title("Boxplot of Scores by Group")
     ax.set_ylabel("Score")
+    ax.set_ylim(0, 211)
     ax.set_xlabel("Group")
 
     # Display text below x-axis for each group
