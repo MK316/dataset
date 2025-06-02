@@ -153,26 +153,30 @@ with tabs[3]:
 with tabs[4]:
     st.markdown("### 📦 Group Score Distribution")
 
+    # Prepare color palette
     unique_groups = df["Group"].unique()
     palette = sns.color_palette("Set2", len(unique_groups))
 
-    # Plot setup
+    # Set up the plot
     fig, ax = plt.subplots(figsize=(8, 5))
-    sns.boxplot(data=df, x="Group", y="Midterm2", ax=ax, palette=palette)
+    box = sns.boxplot(data=df, x="Group", y="Midterm2", ax=ax, palette=palette)
 
     ax.set_title("Boxplot of Scores by Group")
     ax.set_ylabel("Midterm2")
     ax.set_ylim(0, 220)
     ax.set_xlabel("Group")
 
-    # Get the actual group order from the x-axis tick labels
-    tick_labels = [t.get_text() for t in ax.get_xticklabels()]
+    # Ensure we get the order seaborn used for plotting
+    plotted_order = box.get_xticklabels()
+    group_order = [label.get_text() for label in plotted_order]
+
+    # Compute medians based on that order
     medians = df.groupby("Group")["Midterm2"].median()
 
-    for i, group in enumerate(tick_labels):
+    for i, group in enumerate(group_order):
         median_value = medians[group]
-        ax.text(i, median_value - 10, f"Median: {median_value:.1f}",
-                ha='center', va='center', fontsize=8, color='black')
+        ax.text(i, median_value - 5, f"Median: {median_value:.1f}",
+                ha='center', va='center', fontsize=9, color='black')
 
     st.pyplot(fig)
 
