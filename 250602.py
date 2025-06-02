@@ -98,12 +98,12 @@ with tabs[2]:
 # --- Tab 4: Leaderboard ---
 # --- Tab 4: Leaderboard ---
 with tabs[3]:
-    st.markdown("### 📊 Leaderboard: Midterm1 and Midterm2 Comparison")
+    st.markdown("### 📊 Leaderboard: Midterm1 Reference with Midterm2 Comparison")
 
     passcode_input_lb = st.text_input("🔐 (Optional) Enter your passcode to highlight your score:")
 
-    # Sort by Midterm2 descending
-    df_sorted = df.sort_values(by="Midterm2", ascending=False).reset_index(drop=True)
+    # Sort by Midterm1 descending
+    df_sorted = df.sort_values(by="Midterm1", ascending=False).reset_index(drop=True)
 
     user_index = None
     user_sid = None
@@ -116,24 +116,30 @@ with tabs[3]:
 
     # Plot setup
     fig, ax = plt.subplots(figsize=(10, 5))
-    x_vals = range(len(df_sorted))
+    x_vals = list(range(len(df_sorted)))
 
-    # Plot Midterm1
-    ax.scatter(x_vals, df_sorted['Midterm1'], color='lightblue', label='Midterm 1', s=90, alpha=0.7)
+    for i, row in df_sorted.iterrows():
+        mid1 = row["Midterm1"]
+        mid2 = row["Midterm2"]
+        color_line = "gray"
+        ax.plot([i, i], [mid1, mid2], color=color_line, alpha=0.4, linewidth=1)
 
-    # Plot Midterm2
-    ax.scatter(x_vals, df_sorted['Midterm2'], color='blue', label='Midterm 2', s=90, alpha=0.9)
+    # Plot all Midterm1 as gray dots
+    ax.scatter(x_vals, df_sorted["Midterm1"], color='gray', s=90, label="Midterm 1", alpha=0.6)
+
+    # Plot all Midterm2 as blue dots
+    ax.scatter(x_vals, df_sorted["Midterm2"], color='blue', s=90, label="Midterm 2", alpha=0.9)
 
     # Highlight user
     if user_index is not None:
-        ax.scatter(user_index, df_sorted.loc[user_index, 'Midterm1'], color='orange', s=130, label='Your Midterm 1')
-        ax.scatter(user_index, df_sorted.loc[user_index, 'Midterm2'], color='red', s=130, label='Your Midterm 2')
+        ax.scatter(user_index, df_sorted.loc[user_index, "Midterm1"], color="orange", s=130, label="Your Midterm 1")
+        ax.scatter(user_index, df_sorted.loc[user_index, "Midterm2"], color="red", s=130, label="Your Midterm 2")
 
-    ax.set_xlabel("Rank Order (by Midterm 2)")
+    ax.set_xlabel("Rank Order (by Midterm 1)")
     ax.set_ylabel("Score")
-    ax.set_title("Leaderboard: Midterm 1 and Midterm 2 Scores")
     ax.set_ylim(0, 220)
-    ax.invert_xaxis()  # Higher scores on the left
+    ax.set_title("Leaderboard: Midterm1 vs Midterm2 (Sorted by Midterm1)")
+    ax.invert_xaxis()  # Highest scores on the left
     ax.legend()
     st.pyplot(fig)
 
