@@ -121,7 +121,7 @@ with tabs[4]:
 
     # Plot setup
     fig, ax = plt.subplots(figsize=(8, 5))
-    sns.boxplot(data=df, x="Group", y="Score (2nd Midterm)", ax=ax, palette=palette)
+    sns.boxplot(data=df, x="Group", y="Midterm2", ax=ax, palette=palette)
 
     # Compute median values
     medians = df.groupby("Group")["Midterm2"].median()
