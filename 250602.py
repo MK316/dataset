@@ -20,7 +20,7 @@ tabs = st.tabs(["📘 Instructions", "🍰 Overall Result", "🔍 Check My Score
 
 # --- Tab 1: Instructions ---
 with tabs[0]:
-    st.caption("📍 This page will be available only until May 13.")
+    st.caption("📍 This page will be available only until June 5.")
     st.markdown("---")
     st.markdown("""
     ### 📘 Tab 1: Instructions  
