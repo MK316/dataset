@@ -8,7 +8,7 @@ from io import BytesIO
 # Load your CSV
 @st.cache_data
 def load_data():
-    df = pd.read_csv("https://raw.githubusercontent.com/MK316/dataset/refs/heads/main/S250529.csv")
+    df = pd.read_csv("https://raw.githubusercontent.com/MK316/dataset/refs/heads/main/S250603.csv")
     df.columns = df.columns.str.strip()  # Remove extra spaces
     df["Midterm2"] = pd.to_numeric(df["Midterm2"], errors="coerce")  # Ensure numeric
     df = df.dropna(subset=["Group", "Midterm2"])  # Drop rows with missing values
@@ -96,36 +96,40 @@ with tabs[2]:
 
 
 # --- Tab 4: Leaderboard ---
+# --- Tab 4: Leaderboard (Midterm1 vs Midterm2) ---
 with tabs[3]:
-    st.markdown("### 📊 Leaderboard")
+    st.markdown("### 📊 Score Comparison by Student (Midterm1 vs Midterm2)")
+
     passcode_input_lb = st.text_input("🔐 (Optional) Enter your passcode to highlight your score:")
 
-    df_sorted = df.sort_values(by="Midterm2", ascending=True).reset_index(drop=True)
-    user_index = None
-    user_score = None
+    # Sort by SID for consistent order
+    df_sorted = df.sort_values(by="SID").reset_index(drop=True)
 
+    # Optional highlight
+    user_sid = None
     if passcode_input_lb:
         match = df[df['Passcode'].astype(str) == passcode_input_lb.strip()]
         if not match.empty:
-            user_score = match.iloc[0]['Midterm2']
-            user_index = df_sorted[df_sorted['Midterm2'] == user_score].index[0]
+            user_sid = match.iloc[0]['SID']
 
-    fig, ax = plt.subplots(figsize=(8, 5))
-    x_vals = range(len(df_sorted))
-    y_vals = df_sorted['Midterm2']
+    # Plot setup
+    fig, ax = plt.subplots(figsize=(10, 5))
 
-    ax.scatter(x_vals, y_vals, color='gray', s=100, label='Others')
+    for i, row in df_sorted.iterrows():
+        sid = row["SID"]
+        x = [0, 1]
+        y = [row["Midterm1"], row["Midterm2"]]
+        color = "red" if sid == user_sid else "gray"
+        ax.plot(x, y, marker="o", color=color, linewidth=1.5 if sid == user_sid else 0.8, alpha=0.8)
 
-    if user_index is not None:
-        ax.scatter(user_index, user_score, color='red', s=120, label='You')
-
-    ax.set_xlabel("Rank Order (Highest to Lowest)")
-    ax.set_ylabel("Midterm2")
+    # Labels and style
+    ax.set_xticks([0, 1])
+    ax.set_xticklabels(["Midterm 1", "Midterm 2"])
+    ax.set_ylabel("Score")
     ax.set_ylim(0, 220)
-    ax.set_title("Leaderboard: Score Distribution")
-    ax.invert_xaxis()
-    ax.legend()
+    ax.set_title("Student Score Change: Midterm 1 → Midterm 2")
     st.pyplot(fig)
+
 
 # --- Tab 5: Group Score ---
 with tabs[4]:
