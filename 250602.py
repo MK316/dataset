@@ -116,7 +116,8 @@ with tabs[3]:
 
     # Plot setup
     fig, ax = plt.subplots(figsize=(10, 5))
-    x_vals = list(range(len(df_sorted)))
+    x_vals = list(reversed(range(len(df_sorted))))
+
 
     for i, row in df_sorted.iterrows():
         mid1 = row["Midterm1"]
