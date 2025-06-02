@@ -16,7 +16,7 @@ def load_data():
 
 df = load_data()
 
-tabs = st.tabs(["📘 Instructions", "🍰 Overall Result", "🔍 Check My Score", "📊 Leaderboard", "🍎 Group Score"])
+tabs = st.tabs(["📘 Instructions", "🍰 Overall Result", "🔍 Check My Score", "📊 Scores in order", "🍎 Group Score"])
 
 # --- Tab 1: Instructions ---
 with tabs[0]:
@@ -98,7 +98,7 @@ with tabs[2]:
 # --- Tab 4: Leaderboard ---
 # --- Tab 4: Leaderboard ---
 with tabs[3]:
-    st.markdown("### 📊 Leaderboard: Midterm1 Reference with Midterm2 Comparison")
+    st.markdown("### 📊 Leaderboard: Midterm 1 and 2 Comparison")
 
     passcode_input_lb = st.text_input("🔐 (Optional) Enter your passcode to highlight your score:")
 
