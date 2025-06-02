@@ -133,10 +133,12 @@ with tabs[3]:
     ax.scatter(x_vals, df_sorted["Midterm2"], color='blue', s=90, label="Midterm 2", alpha=0.9)
 
     # Highlight user if found
+
     if user_index is not None:
-        user_x = x_vals[user_index]
+        user_x = x_vals[user_index]  # Correct x-position
         ax.scatter(user_x, df_sorted.loc[user_index, "Midterm1"], color="orange", s=130, label="Your Midterm 1")
         ax.scatter(user_x, df_sorted.loc[user_index, "Midterm2"], color="red", s=130, label="Your Midterm 2")
+
 
     ax.set_xlabel("Rank Order (by Midterm 1)")
     ax.set_ylabel("Score")
