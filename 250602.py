@@ -144,7 +144,8 @@ with tabs[3]:
     ax.set_ylabel("Score")
     ax.set_ylim(0, 220)
     ax.set_title("Leaderboard: Midterm1 vs Midterm2 (Sorted by Midterm1)")
-    ax.legend()
+    ax.legend(loc='lower right')
+
     st.pyplot(fig)
 
 
