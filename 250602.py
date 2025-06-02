@@ -114,33 +114,34 @@ with tabs[3]:
             user_sid = match.iloc[0]['SID']
             user_index = df_sorted[df_sorted['SID'] == user_sid].index[0]
 
+    # Prepare reversed x-values to display higher scores on the left
+    num_students = len(df_sorted)
+    x_vals = list(range(num_students - 1, -1, -1))  # reversed index
+
     # Plot setup
     fig, ax = plt.subplots(figsize=(10, 5))
-    x_vals = list(reversed(range(len(df_sorted))))
 
+    for x, i in zip(x_vals, range(num_students)):
+        mid1 = df_sorted.iloc[i]["Midterm1"]
+        mid2 = df_sorted.iloc[i]["Midterm2"]
+        ax.plot([x, x], [mid1, mid2], color='gray', alpha=0.4, linewidth=1)
 
-    for i, row in df_sorted.iterrows():
-        mid1 = row["Midterm1"]
-        mid2 = row["Midterm2"]
-        color_line = "gray"
-        ax.plot([i, i], [mid1, mid2], color=color_line, alpha=0.4, linewidth=1)
-
-    # Plot all Midterm1 as gray dots
+    # Plot Midterm1 (gray)
     ax.scatter(x_vals, df_sorted["Midterm1"], color='gray', s=90, label="Midterm 1", alpha=0.6)
 
-    # Plot all Midterm2 as blue dots
+    # Plot Midterm2 (blue)
     ax.scatter(x_vals, df_sorted["Midterm2"], color='blue', s=90, label="Midterm 2", alpha=0.9)
 
-    # Highlight user
+    # Highlight user if found
     if user_index is not None:
-        ax.scatter(user_index, df_sorted.loc[user_index, "Midterm1"], color="orange", s=130, label="Your Midterm 1")
-        ax.scatter(user_index, df_sorted.loc[user_index, "Midterm2"], color="red", s=130, label="Your Midterm 2")
+        user_x = x_vals[user_index]
+        ax.scatter(user_x, df_sorted.loc[user_index, "Midterm1"], color="orange", s=130, label="Your Midterm 1")
+        ax.scatter(user_x, df_sorted.loc[user_index, "Midterm2"], color="red", s=130, label="Your Midterm 2")
 
     ax.set_xlabel("Rank Order (by Midterm 1)")
     ax.set_ylabel("Score")
     ax.set_ylim(0, 220)
     ax.set_title("Leaderboard: Midterm1 vs Midterm2 (Sorted by Midterm1)")
-    ax.invert_xaxis()  # Highest scores on the left
     ax.legend()
     st.pyplot(fig)
 
