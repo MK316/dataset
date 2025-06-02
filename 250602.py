@@ -58,6 +58,7 @@ with tabs[1]:
     st.pyplot(fig)
 
 # --- Tab 3: Check My Score ---
+# --- Tab 3: Check My Score ---
 with tabs[2]:
     st.markdown("### 🔍 Check Your Score")
     passcode_input = st.text_input("Enter your passcode: One alphabet + 4 digits (e.g., J0000)")
@@ -66,9 +67,24 @@ with tabs[2]:
         match = df[df['Passcode'].astype(str) == passcode_input.strip()]
         if not match.empty:
             row = match.iloc[0]
-            st.success(f"✅ Name: {row['Name']}, Group: {row['Group']}, Score: {row['Midterm2']}")
+            name = row['Name']
+            group = row['Group']
+            mid1 = row['Midterm1']
+            mid2 = row['Midterm2']
+            diff = row['Diff']
+
+            arrow = "✅" if diff > 0 else ("🔻" if diff < 0 else "➡️")
+
+            st.success(f"""
+            ✅ **Name:** {name}  
+            ✅ **Group:** {group}  
+            📝 **Midterm 1:** {mid1}  
+            📝 **Midterm 2:** {mid2}  
+            📊 **Change:** {diff:+} {arrow}
+            """)
         else:
             st.error("❌ Passcode not found. Please try again.")
+
 
 # --- Tab 4: Leaderboard ---
 with tabs[3]:
