@@ -44,7 +44,7 @@ with tabs[0]:
 # --- Tab 2: Overall score ---
 with tabs[1]:
     st.markdown("### 📦 Score Comparison: Midterm 1 vs Midterm 2")
-
+    st.caption("The score inside each box represents Median (the center score).")
     # Prepare data
     df_long = pd.melt(df, value_vars=["Midterm1", "Midterm2"],
                       var_name="Exam", value_name="Score")
