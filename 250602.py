@@ -41,10 +41,11 @@ with tabs[0]:
 
 # --- Tab 2: Overall score ---
 # --- Tab 2: Overall score ---
+# --- Tab 2: Overall score ---
 with tabs[1]:
     st.markdown("### 📦 Score Comparison: Midterm 1 vs Midterm 2")
 
-    # Prepare data for comparison
+    # Prepare data
     df_long = pd.melt(df, value_vars=["Midterm1", "Midterm2"],
                       var_name="Exam", value_name="Score")
 
@@ -52,15 +53,17 @@ with tabs[1]:
     fig, ax = plt.subplots(figsize=(6, 5))
     sns.boxplot(data=df_long, x="Exam", y="Score", palette=["lightgray", "skyblue"], ax=ax)
 
-    # Annotate medians
+    # Annotate medians inside boxes
     for i, col in enumerate(["Midterm1", "Midterm2"]):
         median = df[col].median()
-        ax.text(i, df[col].min() - 10, f"Median: {median:.1f}",
-                ha='center', va='center', fontsize=10, color='black')
+        ax.text(i, median - 5, f"{median:.1f}",  # Adjust -5 to control vertical offset
+                ha='center', va='center', fontsize=10, color='black', weight='bold')
 
     ax.set_title("Boxplot Comparison of Midterm 1 and Midterm 2")
     ax.set_ylim(0, 220)
+    ax.set_ylabel("Score")
     st.pyplot(fig)
+
 
 
 # --- Tab 3: Check My Score ---
