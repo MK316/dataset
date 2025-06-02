@@ -40,22 +40,28 @@ with tabs[0]:
     """)
 
 # --- Tab 2: Overall score ---
+# --- Tab 2: Overall score ---
 with tabs[1]:
-    st.markdown("### 📦 Score Distribution (All Students)")
+    st.markdown("### 📦 Score Comparison: Midterm 1 vs Midterm 2")
 
+    # Prepare data for comparison
+    df_long = pd.melt(df, value_vars=["Midterm1", "Midterm2"],
+                      var_name="Exam", value_name="Score")
+
+    # Plot
     fig, ax = plt.subplots(figsize=(6, 5))
-    sns.boxplot(y=df["Midterm2"], color="skyblue", ax=ax)
+    sns.boxplot(data=df_long, x="Exam", y="Score", palette=["lightgray", "skyblue"], ax=ax)
 
-    median_value = df["Midterm2"].median()
+    # Annotate medians
+    for i, col in enumerate(["Midterm1", "Midterm2"]):
+        median = df[col].median()
+        ax.text(i, df[col].min() - 10, f"Median: {median:.1f}",
+                ha='center', va='center', fontsize=10, color='black')
 
-    ax.set_title("Boxplot of All Scores")
-    ax.set_ylabel("Midterm2")
+    ax.set_title("Boxplot Comparison of Midterm 1 and Midterm 2")
     ax.set_ylim(0, 220)
-
-    ax.text(0, df["Midterm2"].min() - 10, f"Median: {median_value:.1f}",
-            ha='center', va='center', fontsize=10, color='black')
-
     st.pyplot(fig)
+
 
 # --- Tab 3: Check My Score ---
 # --- Tab 3: Check My Score ---
