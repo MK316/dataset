@@ -175,10 +175,12 @@ with tabs[4]:
         q3 = group_data.quantile(0.75)
         median = group_data.median()
 
-        center_y = (q1 + q3) / 2  # vertical center of the box
 
-        ax.text(i, center_y, f"Median: {median:.1f}",
+
+        center_plot_y = (ax.get_ylim()[0] + ax.get_ylim()[1]) / 2  # midpoint of y-axis
+        ax.text(i, center_plot_y, f"Median: {median:.1f}",
                 ha='center', va='center', fontsize=9, color='black')
+
 
     st.pyplot(fig)
 
