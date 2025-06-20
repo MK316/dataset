@@ -57,7 +57,7 @@ if passcode:
         - **Attendance:** {row['Att']} / 10  
 
         ---
-        ### 💖 5. Extra Credits (5 pts max)  
+        ### 💖 5. Extra Credits (4 pts max)  
         - **Extra Credit (EC):** {row['EC']} pts  
 
         ---
