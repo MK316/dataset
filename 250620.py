@@ -48,7 +48,7 @@ if passcode:
         ### ⭐ Extra & Participation  
         - **Extra Credit (EC):** {row['EC']} pts  
         - **Attendance:** {row['Att']} / 10  
-        - **Final Presentation:** {row['Final Presentation']} pts
+        - **Final Presentation:** {row['Final_Presentation']} pts
 
         ---
         ### 🧮 Total Grade Summary
