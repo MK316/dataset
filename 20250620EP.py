@@ -13,7 +13,7 @@ def load_data():
 df = load_data()
 
 # --- App layout ---
-st.title("🎓 English Pronunciation: Grade Detail Checker")
+st.markdown("### 🎓 English Pronunciation: Grade Detail Checker")
 st.write("Enter your unique **Passcode** to check your grade details.")
 
 passcode = st.text_input("🔑 Passcode", type="password")
