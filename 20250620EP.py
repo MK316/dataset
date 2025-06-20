@@ -55,6 +55,7 @@ if passcode:
         
         - **Extra Credit (EC):** {row['EC']} pts
         ---
+        """)
         st.markdown(f"""
         ### 🌀 Total Grade Summary
         - **Total Score:** **{row['Total']}** / 105  
