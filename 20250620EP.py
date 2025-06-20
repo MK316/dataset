@@ -13,7 +13,7 @@ def load_data():
 df = load_data()
 
 # --- App layout ---
-st.title("🎓 Grade Checker")
+st.title("🎓 English Pronunciation: Grade Detail Checker")
 st.write("Enter your unique **Passcode** to check your grade details.")
 
 passcode = st.text_input("🔑 Passcode", type="password")
@@ -33,13 +33,13 @@ if passcode:
         **👥 Group:** {row['Group']}  
 
         ---
-        ### 📝 1. Midterm Exams (40%)  
+        #### 📝 1. Midterm Exams (40%)  
         - **First Midterm (Raw Score):** {row['Mid1st']} / 210 pts    
         - **Second Midterm (Raw Score):** {row['Mid2nd']} / 210 pts   
         - **Midterm (Scaled to 40 pts):** **{row['Miterm']}** / 40 pts   
 
         ---
-        ### 📚 2. Assignments (20%)  
+        #### 📚 2. Assignments (20%)  
         - **HW1:** {'✔️ Completed (4 pts)' if row['HW1'] == 4 else '❌ Incomplete (0 pts)'}  
         - **HW2:** {'✔️ Completed (4 pts)' if row['HW2'] == 4 else '❌ Incomplete (0 pts)'}  
         - **HW3:** {row['HW3']} / 4 pts  (One minute video recording)  
@@ -49,22 +49,22 @@ if passcode:
         ##### ❄️ **Assignments Total:** {assignments_total} / total 20 pts  
 
         ---
-        ### ⭐ 3. Final Presentation (30%)  
+        #### ⭐ 3. Final Presentation (30%)  
         - **Final Presentation:** {row['Final_Presentation']} / 30 pts 
 
         ---
-        ### 👥 4. Attendance (10%)  
+        #### 👥 4. Attendance (10%)  
         - **Attendance:** {row['Att']} / 10 pts  
 
         ---
-        ### 💖 5. Extra Credits (4 pts max)  
+        #### 💖 5. Extra Credits (4 pts max)  
         - **Extra Credit (EC):** {row['EC']} pts  
 
         ---
         """)
 
         st.markdown(f"""
-        ### 🌀 Total Grade Summary  
+        #### 🌀 Total Grade Summary  
         - **Total Score:** **{row['Total']}** / 105 pts available  
         - **Performance Rank:** **{row['Rank']}** / 26 Students  
         """)
