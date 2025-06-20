@@ -50,7 +50,7 @@ if passcode:
 
         ---
         ### ⭐ 3. Final Presentation (30%)  
-        - **Final Presentation:** {row['Final_Presentation']} pts  
+        - **Final Presentation:** {row['Final_Presentation']} pts / 30 pts 
 
         ---
         ### 👥 4. Attendance (10%)  
