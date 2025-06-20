@@ -75,8 +75,8 @@ if passcode:
             grade = "C"
         else:
             grade = "F"
-        st.markdown("---")
-        st.markdown(f"### ❄️ **Your Expected Final Grade: {grade}**")
+
+        st.markdown(f"##### ❄️ **Your Expected Final Grade: {grade}**")
 
     else:
         st.error("❌ No match found. Please check your Passcode and try again.")
