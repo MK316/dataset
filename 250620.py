@@ -54,7 +54,7 @@ if passcode:
         ### 💖 5. Extra Credits (5 points maximum)  
         
         - **Extra Credit (EC):** {row['EC']} pts
-        
+        ---
         ### 🌀 Total Grade Summary
         - **Total Score:** **{row['Total']}** / 105  
         """)
@@ -75,7 +75,7 @@ if passcode:
             grade = "C"
         else:
             grade = "F"
-
+        ---
         st.markdown(f"### ❄️ **Your Expected Final Grade: {grade}**")
 
     else:
