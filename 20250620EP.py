@@ -34,9 +34,9 @@ if passcode:
 
         ---
         ### 📝 1. Midterm Exams (40%)  
-        - **First Midterm (Raw Score):** {row['Mid1st']} / total 210  
-        - **Second Midterm (Raw Score):** {row['Mid2nd']} / total 210  
-        - **Midterm (Scaled to 40 pts):** **{row['Miterm']}** / total 40  
+        - **First Midterm (Raw Score):** {row['Mid1st']} / total 210 pts    
+        - **Second Midterm (Raw Score):** {row['Mid2nd']} / total 210 pts   
+        - **Midterm (Scaled to 40 pts):** **{row['Miterm']}** / total 40 pts   
 
         ---
         ### 📚 2. Assignments (20%)  
@@ -46,7 +46,7 @@ if passcode:
         - **HW4:** {row['HW4']} / 4 pts (Hey Jude practice)  
         - **HW5:** {row['HW5']} / 4 pts (3 minute's video recording)  
 
-        ##### ❄️ **Assignments Total:** {assignments_total} / total 20  
+        ##### ❄️ **Assignments Total:** {assignments_total} / total 20 pts  
 
         ---
         ### ⭐ 3. Final Presentation (30%)  
@@ -54,7 +54,7 @@ if passcode:
 
         ---
         ### 👥 4. Attendance (10%)  
-        - **Attendance:** {row['Att']} / total 10  
+        - **Attendance:** {row['Att']} / total 10 pts  
 
         ---
         ### 💖 5. Extra Credits (4 pts max)  
