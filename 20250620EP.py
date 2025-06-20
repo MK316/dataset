@@ -16,7 +16,7 @@ df = load_data()
 st.markdown("### 🎓 English Pronunciation: Grade Detail Checker")
 st.write("Enter your unique **Passcode** to check your grade details.")
 
-passcode = st.text_input("🔑 Passcode: One letter + 4 digits", type="password")
+passcode = st.text_input("🔑 Passcode: One letter + 4 digits (e.g., K1234", type="password")
 
 if passcode:
     student_row = df[df['Passcode'] == passcode]
