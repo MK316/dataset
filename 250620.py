@@ -31,13 +31,13 @@ if passcode:
         **👥 Group:** {row['Group']}  
 
         ---
-        ### 📝 Midterm Exams  
+        ### 📝 1. Midterm Exams (40 %)  
         - **First Midterm (Raw Score):** {row['Mid1st']} / 210  
         - **Second Midterm (Raw Score):** {row['Mid2nd']} / 210  
         - **Midterm (Scaled to 40 pts):** **{row['Miterm']}** / 40  
 
         ---
-        ### 📚 Assignments (20%) 
+        ### 📚 2. Assignments (20%) 
         - **HW1:** {'✔️ Completed (4 pts)' if row['HW1'] == 4 else '❌ Incomplete (0 pts)'}  
         - **HW2:** {'✔️ Completed (4 pts)' if row['HW2'] == 4 else '❌ Incomplete (0 pts)'}  
         - **HW3:** {row['HW3']} / 4  
@@ -45,17 +45,17 @@ if passcode:
         - **HW5:** {row['HW5']} / 4  
 
         ---
-        ### ⭐ Final Presentation (30 %)  
+        ### ⭐ 3. Final Presentation (30 %)  
         - **Final Presentation:** {row['Final_Presentation']} pts
         ---
-        ### ⭐ Attendance (10 %)    
+        ### 👥 4. Attendance (10 %)    
         - **Attendance:** {row['Att']} / 10  
         ---
-        ### ⭐ Extra Credits (5 points maximum)  
+        ### 💖 5. Extra Credits (5 points maximum)  
         
         - **Extra Credit (EC):** {row['EC']} pts
         
-        ### 🧮 Total Grade Summary
+        ### 🌀 Total Grade Summary
         - **Total Score:** **{row['Total']}** / 105  
         """)
 
@@ -76,7 +76,7 @@ if passcode:
         else:
             grade = "F"
 
-        st.markdown(f"### 🎉 **Your Expected Final Grade: {grade}**")
+        st.markdown(f"### ❄️ **Your Expected Final Grade: {grade}**")
 
     else:
         st.error("❌ No match found. Please check your Passcode and try again.")
