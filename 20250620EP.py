@@ -20,7 +20,12 @@ st.markdown("---")
 passcode = st.text_input("🔑 Passcode: One letter + 4 digits (e.g., K1234)", type="password")
 
 if passcode:
-    student_row = df[df['Passcode'] == passcode]
+    # Normalize case
+    passcode_upper = passcode.upper()
+
+    # Filter DataFrame with case-insensitive match
+    student_row = df[df['Passcode'].str.upper() == passcode_upper]
+
 
     if not student_row.empty:
         st.success("✅ Passcode matched! Here is your grade breakdown:")
