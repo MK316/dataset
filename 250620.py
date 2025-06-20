@@ -37,7 +37,7 @@ if passcode:
         - **Midterm (Scaled to 40 pts):** **{row['Miterm']}** / 40  
 
         ---
-        ### 📚 Assignments  
+        ### 📚 Assignments (20%) 
         - **HW1:** {'✔️ Completed (4 pts)' if row['HW1'] == 4 else '❌ Incomplete (0 pts)'}  
         - **HW2:** {'✔️ Completed (4 pts)' if row['HW2'] == 4 else '❌ Incomplete (0 pts)'}  
         - **HW3:** {row['HW3']} / 4  
@@ -45,12 +45,16 @@ if passcode:
         - **HW5:** {row['HW5']} / 4  
 
         ---
-        ### ⭐ Extra & Participation  
-        - **Extra Credit (EC):** {row['EC']} pts  
-        - **Attendance:** {row['Att']} / 10  
+        ### ⭐ Final Presentation (30 %)  
         - **Final Presentation:** {row['Final_Presentation']} pts
-
         ---
+        ### ⭐ Attendance (10 %)    
+        - **Attendance:** {row['Att']} / 10  
+        ---
+        ### ⭐ Extra Credits (5 points maximum)  
+        
+        - **Extra Credit (EC):** {row['EC']} pts
+        
         ### 🧮 Total Grade Summary
         - **Total Score:** **{row['Total']}** / 105  
         """)
@@ -72,7 +76,7 @@ if passcode:
         else:
             grade = "F"
 
-        st.markdown(f"### 🎉 **Your Final Grade: {grade}**")
+        st.markdown(f"### 🎉 **Your Expected Final Grade: {grade}**")
 
     else:
         st.error("❌ No match found. Please check your Passcode and try again.")
