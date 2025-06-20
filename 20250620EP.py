@@ -15,7 +15,8 @@ df = load_data()
 # --- App layout ---
 st.markdown("### 🎓 English Pronunciation: Grade Detail Checker")
 st.write("Enter your unique **Passcode** to check your grade details.")
-st.caption("If you find a problem in your grade details, contact me at mirankim@gnu.ac.kr")
+st.caption("If you find a problem in your grade details, contact me at mirankim@gnu.ac.kr by June 22, 2025.")
+st.markdown("---")
 passcode = st.text_input("🔑 Passcode: One letter + 4 digits (e.g., K1234)", type="password")
 
 if passcode:
