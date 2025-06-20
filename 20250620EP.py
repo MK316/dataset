@@ -34,9 +34,9 @@ if passcode:
 
         ---
         ### 📝 1. Midterm Exams (40%)  
-        - **First Midterm (Raw Score):** {row['Mid1st']} / 210  
-        - **Second Midterm (Raw Score):** {row['Mid2nd']} / 210  
-        - **Midterm (Scaled to 40 pts):** **{row['Miterm']}** / 40  
+        - **First Midterm (Raw Score):** {row['Mid1st']} / total 210  
+        - **Second Midterm (Raw Score):** {row['Mid2nd']} / total 210  
+        - **Midterm (Scaled to 40 pts):** **{row['Miterm']}** / total 40  
 
         ---
         ### 📚 2. Assignments (20%)  
@@ -46,15 +46,15 @@ if passcode:
         - **HW4:** {row['HW4']} / 4 pts (Hey Jude practice)  
         - **HW5:** {row['HW5']} / 4 pts (3 minute's video recording)  
 
-        ##### ❄️ **Assignments Total:** {assignments_total} / 20  
+        ##### ❄️ **Assignments Total:** {assignments_total} / total 20  
 
         ---
         ### ⭐ 3. Final Presentation (30%)  
-        - **Final Presentation:** {row['Final_Presentation']} / 30 pts 
+        - **Final Presentation:** {row['Final_Presentation']} / total 30 pts 
 
         ---
         ### 👥 4. Attendance (10%)  
-        - **Attendance:** {row['Att']} / 10  
+        - **Attendance:** {row['Att']} / total 10  
 
         ---
         ### 💖 5. Extra Credits (4 pts max)  
@@ -65,7 +65,7 @@ if passcode:
 
         st.markdown(f"""
         ### 🌀 Total Grade Summary  
-        - **Total Score:** **{row['Total']}** / 105  
+        - **Total Score:** **{row['Total']}** / total 105 pts available  
         - **Performance Rank:** **{row['Rank']}** / 26 Students  
         """)
 
