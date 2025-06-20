@@ -91,5 +91,5 @@ if passcode:
         st.markdown(f"<h4 style='color:blue'>{grade}</h4>", unsafe_allow_html=True)
 
         
-        else:
+    else:
         st.error("❌ No match found. Please check your Passcode and try again.")
