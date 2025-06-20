@@ -75,7 +75,7 @@ if passcode:
             grade = "C"
         else:
             grade = "F"
-        ---
+        st.markdown("---")
         st.markdown(f"### ❄️ **Your Expected Final Grade: {grade}**")
 
     else:
