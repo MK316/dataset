@@ -58,7 +58,7 @@ if passcode:
         st.markdown(f"""
         ### 🌀 Total Grade Summary
         - **Total Score:** **{row['Total']}** / 105  
-        - **Performance Rank:** **{row['Rank']}** / 26 Students
+        - **Performance Rank:** **{row['Rank']}** / 26 Students  
         """)
 
 
