@@ -91,6 +91,19 @@ if passcode:
             f"<h5>❄️ Your Expected Final Letter Grade: <span style='color:blue'>{grade}</span></h5>",
             unsafe_allow_html=True
         )
+        st.markdown("---")
+        st.markdown("### 📊 Grade Scale Reference")
+        st.markdown("""
+        | Letter Grade | Score Range | Description                     |
+        |--------------|-------------|----------------------------------|
+        | A+           | 95 – 105    | Excellent                     |
+        | A            | 90 – 94     | Very Good                       |
+        | B+           | 85 – 89     | Good                       |
+        | B            | 80 – 84     | Satisfactory                            |
+        | C+           | 75 – 79     |  Basic Competency                   |
+        | C            | 70 – 74     | Basic Competency                |
+        | F            | Below 70    | Not Satisfactory (Fail)         |
+        """)
 
 
         
