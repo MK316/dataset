@@ -44,6 +44,7 @@ if passcode:
         - **HW4:** {row['HW4']} / 4  
         - **HW5:** {row['HW5']} / 4  
 
+        ❄️ **Assignments Total:** {row['HW1'] + row['HW2'] + row['HW3'] + row['HW4'] + row['HW5']} / 20 
         ---
         ### ⭐ 3. Final Presentation (30 %)  
         - **Final Presentation:** {row['Final_Presentation']} pts
