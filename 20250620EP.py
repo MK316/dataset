@@ -87,8 +87,11 @@ if passcode:
             grade = "F"
 
         # Display grade in blue
-        st.markdown("##### ❄️ Your Expected Final Letter Grade: ", unsafe_allow_html=True)
-        st.markdown(f"<h4 style='color:blue'>{grade}</h4>", unsafe_allow_html=True)
+        st.markdown(
+            f"<h5>❄️ Your Expected Final Letter Grade: <span style='color:blue'>{grade}</span></h5>",
+            unsafe_allow_html=True
+        )
+
 
         
     else:
