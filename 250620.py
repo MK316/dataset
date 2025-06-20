@@ -41,8 +41,8 @@ if passcode:
         - **HW1:** {'✔️ Completed (4 pts)' if row['HW1'] == 4 else '❌ Incomplete (0 pts)'}  
         - **HW2:** {'✔️ Completed (4 pts)' if row['HW2'] == 4 else '❌ Incomplete (0 pts)'}  
         - **HW3:** {row['HW3']} / 4  (One minute video recording)  
-        - **HW4:** {row['HW4']} / 4  
-        - **HW5:** {row['HW5']} / 4  
+        - **HW4:** {row['HW4']} / 4  (Hey Jude practice)
+        - **HW5:** {row['HW5']} / 4  (3 minute's video recording)
         ##### ❄️ **Assignments Total:** {row['HW1'] + row['HW2'] + row['HW3'] + row['HW4'] + row['HW5']} / 20 
         ---
         ### ⭐ 3. Final Presentation (30 %)  
